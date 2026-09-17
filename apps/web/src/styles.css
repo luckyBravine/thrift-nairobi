@@ -1,0 +1,46 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@theme inline {
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "Karla", sans-serif;
+  --font-sans: "Karla", sans-serif;
+  --font-mono: "Space Mono", monospace;
+  --color-background: var(--background); --color-foreground: var(--foreground);
+  --color-card: var(--card); --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary); --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary); --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted); --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent); --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border); --color-input: var(--input); --color-ring: var(--ring);
+}
+:root {
+  --radius: .5rem; --background: oklch(0.992 0.006 91); --foreground: oklch(0.345 0.036 163);
+  --card: oklch(0.998 0.003 91); --card-foreground: oklch(0.345 0.036 163);
+  --primary: oklch(0.345 0.036 163); --primary-foreground: oklch(0.992 0.006 91);
+  --secondary: oklch(0.91 0.009 79); --secondary-foreground: oklch(0.345 0.036 163);
+  --muted: oklch(0.94 0.008 80); --muted-foreground: oklch(0.52 0.025 160);
+  --accent: oklch(0.56 0.105 45); --accent-foreground: oklch(0.992 0.006 91);
+  --border: oklch(0.87 0.012 80); --input: oklch(0.87 0.012 80); --ring: oklch(0.56 0.105 45);
+}
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--color-background); color: var(--color-foreground); font-family: var(--font-body); }
+  button, a, input, textarea, select { outline-color: var(--color-ring); }
+  button, a { cursor: pointer; }
+  h1, h2, h3, p { overflow-wrap: break-word; }
+}
+@utility nav-link { position: relative; padding-bottom: 2px; &::after { content: ""; position: absolute; inset: auto 0 0; height: 1px; background: var(--color-accent); transform: scaleX(0); transform-origin: left; transition: transform .2s ease; } &:hover::after, &[data-status="active"]::after { transform: scaleX(1); } }
+@utility rise { animation: rise .5s cubic-bezier(.32,.72,0,1) both; }
+@utility field { width: 100%; border: 1px solid var(--color-border); background: var(--color-background); border-radius: .5rem; padding: .75rem .9rem; font-size: .875rem; }
+.admin-sidebar { background: #F2EEE9; }
+.badge { display: inline-flex; align-items: center; gap: .35rem; border-radius: 999px; padding: .18rem .6rem; font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+.badge-paid { background: oklch(0.92 0.035 155); color: var(--primary); }
+.badge-pending { background: oklch(0.93 0.045 62); color: var(--accent); }
+.badge-role { background: var(--secondary); color: var(--primary); }
+.wa-link { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; font-size: .8125rem; }
+.admin-card { border: 1px solid var(--color-border); background: var(--card); border-radius: .75rem; padding: 1.25rem; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
