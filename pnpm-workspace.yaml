@@ -9,3 +9,5 @@ allowBuilds:
   esbuild: true
   "@swc/core": true
   core-js-pure: true
+minimumReleaseAgeExclude:
+  - dotenv@18.0.3
