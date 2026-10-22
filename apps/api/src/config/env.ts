@@ -26,6 +26,10 @@ const envSchema = z.object({
     CLOUDINARY_CLOUD_NAME: z.string().optional(),
     CLOUDINARY_API_KEY: z.string().optional(),
     CLOUDINARY_API_SECRET: z.string().optional(),
+
+    WEB_ORIGIN: z.string().url().default("http://localhost:8080"),
+    RESEND_API_KEY: z.string().optional(),
+    EMAIL_FROM: z.string().default("THRIFT NAIROBI <onboarding@resend.dev>")
 });
 
 const parsed = envSchema.safeParse(process.env);
@@ -37,7 +41,8 @@ if(!parsed.success){
 }
 
 export const env = parsed.data;
+export type Env = z.infer<typeof envSchema>;
 
 // Convenience flags
-export const isProduction = env.NODE_ENV === 'production';
+// export const isProduction = env.NODE_ENV === 'production';
 export const isDevelopment = env.NODE_ENV === 'development'

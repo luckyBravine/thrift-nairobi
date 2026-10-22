@@ -5,6 +5,8 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet'
 import { requestIdMiddleware } from './middlewares/request-id';
+import { toNodeHandler } from 'better-auth/node';
+import { auth } from './auth/auth';
 
 export function createApp(): express.Express {
 
@@ -19,6 +21,8 @@ export function createApp(): express.Express {
     }));
     
     app.use(requestIdMiddleware);
+
+    app.all('/api/auth/*splat', toNodeHandler(auth))
     
     // parse incoming JSON request bodies
     app.use(express.json({ 
