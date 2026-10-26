@@ -60,9 +60,7 @@ export const couponRedemptions = pgTable(
   ]
 );
 
-// Also add to orders in commerce.ts when you edit it:
-// 
-// 
+
 
 // ─── Reviews ─────────────────────────────────────────────────────────────────
 
