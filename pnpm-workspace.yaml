@@ -2,12 +2,16 @@ packages:
   - 'packages/*'
   - 'apps/*'
 autoInstallPeers: true
+engineStrict: true
+overrides:
+  better-auth: 1.7.13
+  '@better-auth/drizzle-adapter': 1.7.13
 allowBuilds:
   nx: true
-  "@parcel/watcher": true
+  '@parcel/watcher': true
   unrs-resolver: true
   esbuild: true
-  "@swc/core": true
+  '@swc/core': true
   core-js-pure: true
 minimumReleaseAgeExclude:
   - dotenv@18.0.3

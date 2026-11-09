@@ -1,6 +1,9 @@
 import { createAccessControl } from 'better-auth/plugins/access';
 import { defaultStatements, adminAc } from 'better-auth/plugins/admin/access';
 
+export { STAFF_ROLES } from './roles';
+export type { AppRole, StaffRole } from './roles';
+
 /**
  * Resources for staff RBAC.
  * Keep names singular to match Better Auth conventions.
@@ -29,7 +32,6 @@ export const admin = ac.newRole({
   message: ['read', 'update'],
   invite: ['create', 'read', 'revoke'],
   staff: ['read'],
-  ...adminAc.statements, // Better Auth admin user/session tools
 });
 
 export const superadmin = ac.newRole({
@@ -43,8 +45,5 @@ export const superadmin = ac.newRole({
 });
 
 /** Customer / non-staff */
-export const user = ac.newRole({});
-
-export const STAFF_ROLES = ['superadmin', 'admin', 'support'] as const;
-export type StaffRole = (typeof STAFF_ROLES)[number];
-export type AppRole = StaffRole | 'user';
+export const customer = ac.newRole({});
+export const user = customer;

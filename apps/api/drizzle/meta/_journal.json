@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1793350829845,
+      "tag": "0000_sparkling_albert_cleary",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793519363527,
+      "tag": "0001_admin_two_factor",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793536674551,
+      "tag": "0002_auth_security_controls",
+      "breakpoints": true
+    }
+  ]
+}

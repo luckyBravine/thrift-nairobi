@@ -1,15 +1,18 @@
 import { createAuthClient } from 'better-auth/react';
 import {
   emailOTPClient,
-  adminClient,
   multiSessionClient,
+  twoFactorClient,
 } from 'better-auth/client/plugins';
 
+export const API_BASE_URL =
+  import.meta.env['VITE_API_URL'] ?? 'http://localhost:3000';
+
 export const authClient = createAuthClient({
-  // Prefer same-origin via Vite proxy so cookies work cleanly:
-  // baseURL: ""  and call /api/auth/...
-  // Or absolute API URL with credentials:
-  baseURL:
-    import.meta.env.VITE_API_URL ?? 'http://localhost:3333',
-  plugins: [emailOTPClient(), adminClient(), multiSessionClient()],
+  baseURL: API_BASE_URL,
+  basePath: '/api/auth',
+  fetchOptions: {
+    credentials: 'include',
+  },
+  plugins: [emailOTPClient(), multiSessionClient(), twoFactorClient()],
 });

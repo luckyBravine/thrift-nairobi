@@ -61,7 +61,7 @@ function Checkout() {
     <div className="mx-auto max-w-5xl px-6 py-12">
       <p className="font-mono text-[10px] uppercase tracking-[.18em] text-accent">Guest checkout — no account needed</p>
       <h1 className="mt-2 font-display text-5xl sm:text-6xl">Checkout</h1>
-      <p className="mt-3 max-w-xl text-sm text-muted-foreground">Every piece is one-of-one, so your items stay reserved while you pay. Prefer an account? <Link to="/register" className="text-foreground underline underline-offset-4">Create one</Link>.</p>
+      <p className="mt-3 max-w-xl text-sm text-muted-foreground">Every piece is one-of-one, so your items stay reserved while you pay. You can complete this order as a guest—no account required.</p>
 
       <form onSubmit={submit} className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px]">
         <div>

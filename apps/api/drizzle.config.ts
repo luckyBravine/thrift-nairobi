@@ -3,7 +3,7 @@ import { defineConfig } from "drizzle-kit";
 import { env } from './src/config/env'
 
 export default defineConfig({
-  schema: ["./src/db/schema.ts", "./src/db/auth-schema.ts"],
+  schema: ["./src/db/schema/schema.ts", "./src/db/auth-schema.ts"],
   out: "./drizzle",
   dialect: "postgresql",
   dbCredentials: {

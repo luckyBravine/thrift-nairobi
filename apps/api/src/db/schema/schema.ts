@@ -276,7 +276,7 @@ export const staffInvites = pgTable(
     id: text("id").primaryKey(),
     email: text("email").notNull(),
     role: staffInviteRoleEnum("role").notNull(),
-    token: text("token").notNull().unique(),
+    tokenHash: text("token").notNull().unique(),
     invitedById: text("invited_by_id").notNull(), // superadmin/admin user.id
     expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
     acceptedAt: timestamp("accepted_at", { withTimezone: true }),
@@ -286,7 +286,7 @@ export const staffInvites = pgTable(
   },
   (t) => [
     uniqueIndex("staff_invites_email_pending_uidx").on(t.email),
-    index("staff_invites_token_idx").on(t.token),
+    index("staff_invites_token_idx").on(t.tokenHash),
   ]
 );
 

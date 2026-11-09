@@ -25,8 +25,8 @@ import { createApp } from "./app";
 import { env } from "./config/env";
 import { logger } from "./lib/logger";
 
-const app = createApp()
+const app = createApp();
 
-app.listen(env.PORT, ()=>{
-  logger.info(`Server is now running on port http:localhost:${env.PORT}`)
-})
+app.listen(env.PORT, () => {
+  logger.info(`Server is now running at http://localhost:${env.PORT}`);
+});

@@ -1,4 +1,5 @@
 import  pino, { type LoggerOptions } from "pino";
+import pretty from "pino-pretty";
 import {env, isDevelopment } from '../config/env';
 
 const baseOptions: LoggerOptions = {
@@ -20,14 +21,11 @@ const baseOptions: LoggerOptions = {
 export const logger = pino(
     baseOptions,
     isDevelopment
-    ? pino.transport({
-        target: 'pino-pretty',
-        options: {
+    ? pretty({
             colorize: true,
             translateTime: 'HH:MM:ss',
             ignore: 'pid, hostname',
-        },
-    })
+        })
     : undefined,
     // pino.transport({
     //     targets: [
